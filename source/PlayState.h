@@ -15,7 +15,6 @@
 #include "GameState.h"
 #include "ObjectAllocator.h"
 #include "tonc_types.h"
-//#include "tonc_video.h"
 #include "Bullet.h"
 #include "Stage.h"
 #include "PowerUp.h"

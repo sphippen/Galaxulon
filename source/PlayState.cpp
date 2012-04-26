@@ -136,24 +136,6 @@ void PlayState::init()
 
 	//Set up store state
 	g_storeState->setPlayerPointer(&player);
-
-	//spawnPowerUp(StageEvent::bomb, 70);
-
-	// Add in enemies.
-	/*EnemyIterator itr = enemies.alloc(3);
-	Enemy* curEnemy;
-	int i = 0;
-	while ((curEnemy = itr.next()) != 0)
-	{
-	curEnemy->setPos(100 + i * 20, 0 + i * 20);
-	curEnemy->setPalette(0);
-	curEnemy->setSize(Sprite::size_16x32);
-	curEnemy->setTileIndex(g_jellyfishSpriteTilesPos);
-	curEnemy->setVisible(true);
-	curEnemy->setPath(g_verticalEnemyPath);
-	curEnemy->resetTimer();
-	++i;
-	}*/
 }
 
 void PlayState::update()
@@ -189,8 +171,6 @@ void PlayState::update()
 		{
 			bombAnimationCount = 0;
 			bombAnimation = false;
-			//player.setVisible(true);
-			//memcpy16(&se_mem[24], g_demo_starsMap, SBB_SIZE/2);
 		}
 	}
 
@@ -276,13 +256,6 @@ void PlayState::refreshed()
 	R_triggered_indicator.setTileIndex(g_bullet_selection1TilesPos);
 	R_triggered_indicator.setSize(R_TRIG_INDIC_SPRITE_SIZE);
 	R_triggered_indicator.setVisible(true);
-
-	// Initialize all lives
-	/*for (int i = 0; i < MAX_LIVES; ++i)
-	{
-		lives[i].useImg(Ith_LIFE_SPRITE_POS);
-		lives[i].setTileIndex(g_playerSpriteTilesPos);
-	}*/
 
 	// Power ups
 	powerUp.useImg(POWER_UP_SPRITE_POS);
@@ -434,9 +407,6 @@ void PlayState::spawnEnemy(int count, StageEvent::EnemyType * enemyTypes, int * 
 
 void PlayState::spawnPowerUp(StageEvent::PowerUpType type, int yOffset)
 {
-	//assert2(type == StageEvent::firePower, "The type is firepower.");
-	//if(powerUpExists || poweredUp) // Can change later if we add more than one power up on screen at a time.
-	//	return;
 	switch(type)
 	{
 	case StageEvent::none:
@@ -457,7 +427,6 @@ void PlayState::spawnPowerUp(StageEvent::PowerUpType type, int yOffset)
 		}
 	case StageEvent::invincibility:
 		{
-			//powerUp.setPowerUpEnd(300);  The invincibility time is defined and then set in globals.cpp instead of here.
 			powerUp.setPowerUp(g_invincibilityPowerUp);
 			powerUp.setPowerDown(g_invincibilityPowerDown);
 			powerUp.setPos(POWERUP_X_VALUE, yOffset);
@@ -807,8 +776,6 @@ void PlayState::checkInput()
 		}
 
 		bombAnimation = true;
-		//memset32(&se_mem[24], 0x00020002, (SBB_SIZE/4));
-		//player.setVisible(false);
 
 		// Destroy enemy bullets
 		EnemyBulletIterator enemyBulletItr = enemyBullets.begin();
@@ -909,30 +876,6 @@ void PlayState::updateEnemies()
 				g_audioMan->playOneShot(enemyDiedNoise, enemyDiedNoiseSize, 32);
 				itr.dealloc();
 			}
-			/*
-			if(enemyBulletCounter == enemyBulletFrequency)
-			{
-				enemyBulletCounter = 0;
-
-				// Hacked together quick enemy firing.
-				EnemyBulletIterator newBullets = enemyBullets.alloc(1);
-				Bullet* toModify;
-
-				// Initialize new bullets
-				int offset = -10;
-				int dirSign = -1;
-				while ((toModify = newBullets.next()) != 0)
-				{
-					toModify->setPos(curEnemy->X() + offset, curEnemy->Y() + 16);
-					toModify->setTileIndex(g_bulletSpriteTilesPos);
-					toModify->setVisible(true);
-					toModify->setPath(g_horizontalLeftBulletPath);
-					dirSign *= -1;
-				}
-			}
-			else
-				enemyBulletCounter++;
-				*/
 		}
 	} 
 }
@@ -969,7 +912,6 @@ void PlayState::advanceStage()
 				break;
 			}
 		}
-		//gameStateMan->pushState(g_pauseState);
 		gameStateMan->pushState(g_stageEndState);
 	}
 }
@@ -982,24 +924,3 @@ void PlayState::updatePlayer()
 	}
 	player.update();
 }
-
-/*
-void PlayState::loseLife()
-{
-	// Decrement life count
-	--lifeCount;
-	lives[lifeCount-1].setVisible(false);
-
-	// Give temporary immunity to damage
-	player.setInvincibility(60);
-
-	// If you're out of lives, the game is over
-	if(lifeCount == 0)
-	{
-		gameStateMan->changeState(g_gameOverState);
-		return;
-	}
-
-	player.setPos(PLAYER_ORIGIN);
-}
-*/

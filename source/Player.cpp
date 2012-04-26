@@ -267,8 +267,7 @@ bool Player::killPlayer()
 
 void Player::addLife()
 {
-	//if (lifeCount < MAX_LIVES)
-		lifeCount++;
+	lifeCount++;
 }
 
 int Player::getLifeCount()
@@ -283,7 +282,6 @@ void Player::upgradeLightFire()
 
 void Player::upgradeHeavyFire()
 {
-	//fastChargingHeavyFire = true;
 	heavyBulletFrequency = UPGRADED_HEAVY_BULLET_FREQUENCY;
 	heavyBulletCounter = heavyBulletFrequency;
 }
