@@ -21,7 +21,7 @@
 Player::Player() : Sprite(Sprite::size_32x16, g_playerSpriteTilesPos), velocity(2), lightBulletCounter(0), lightBulletFrequency(DEFAULT_LIGHT_BULLET_FREQUENCY),
 	heavyBulletCounter(0), heavyBulletFrequency(DEFAULT_HEAVY_BULLET_FREQUENCY), playerLightDamage(1), playerHeavyDamage(3), invincibilityTime(0), bombCount(1),
 	lifeCount(INITIAL_LIFE_COUNT), splitFiresUp(true), doubleLightFire(false), fastChargingHeavyFire(false), hasShield(false),
-    isShielded(false), shieldCounter(0)
+	isShielded(false), shieldCounter(0)
 {
 
 }
@@ -45,19 +45,19 @@ void Player::update()
 	if (invincibilityTime > 0)
 		invincibilityTime--;
 
-    shieldCounter--;
-    if(shieldCounter == 0)
-    {
-        isShielded = true;
-    }
+	shieldCounter--;
+	if(shieldCounter == 0)
+	{
+		isShielded = true;
+	}
 
 	// Display a different coloring if shields are up
-    if(isInvincible())
-        setPalette(7);
+	if(isInvincible())
+		setPalette(7);
 	else if(isShielded)
-        setPalette(6);
+		setPalette(6);
 	else
-        setPalette(0);
+		setPalette(0);
 
 	assert2(invincibilityTime >= 0, "The player's invincibility time is negative.");
 	assert2(bombCount >=0, "The player's bomb count is negative.");
@@ -249,20 +249,20 @@ bool Player::killPlayer()
 	// update global to indicate player was hit
 	g_playerHitThisStage = true;
 
-    if(!isShielded)
-    {
+	if(!isShielded)
+	{
 		g_audioMan->playOneShot(diedNoise, diedNoiseSize, 64);
-        lifeCount--;
-        if(hasShield)
-            isShielded = true;
-        return lifeCount != 0;
-    }
-    else
-    {
-        isShielded = false;
-        shieldCounter = 600;
-        return false;
-    }
+		lifeCount--;
+		if(hasShield)
+			isShielded = true;
+		return lifeCount != 0;
+	}
+	else
+	{
+		isShielded = false;
+		shieldCounter = 600;
+		return false;
+	}
 }
 
 void Player::addLife()
@@ -291,7 +291,7 @@ void Player::upgradeHeavyFire()
 void Player::addShield()
 {
 	hasShield = true;
-    isShielded = true;
+	isShielded = true;
 }
 
 void Player::reset()
@@ -302,7 +302,7 @@ void Player::reset()
 	heavyBulletFrequency = DEFAULT_HEAVY_BULLET_FREQUENCY;
 	heavyBulletCounter = heavyBulletFrequency;
 	hasShield = false;
-    isShielded = false;
-    shieldCounter = 0;
-    setInvincibility(false);
+	isShielded = false;
+	shieldCounter = 0;
+	setInvincibility(false);
 }

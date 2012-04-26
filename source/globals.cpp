@@ -1012,19 +1012,19 @@ Vec2 g_verticalEnemyPath(int* t)
 {
 	assert2(t != 0, "Passed null parameter to path function");
 
-    if(*t < 60)
-    {
-        return Vec2(0, 1);
-    }
-    else if(*t < 120)
-    {
-        return Vec2(0, -1);
-    }
-    else
-    {
-        *t = 0;
-        return Vec2(0, 1);
-    }
+	if(*t < 60)
+	{
+		return Vec2(0, 1);
+	}
+	else if(*t < 120)
+	{
+		return Vec2(0, -1);
+	}
+	else
+	{
+		*t = 0;
+		return Vec2(0, 1);
+	}
 }
 
 // Bullet path functions
@@ -1034,7 +1034,7 @@ Vec2 g_horizontalRightBulletPath(int* t)
 {
 	assert2(t != 0, "Passed null parameter to path function");
 
-    return Vec2(3, 0);
+	return Vec2(3, 0);
 }
 
 // Horizontally to the left
@@ -1042,7 +1042,7 @@ Vec2 g_horizontalLeftBulletPath(int* t)
 {
 	assert2(t != 0, "Passed null parameter to path function");
 
-    return Vec2(-1, 0);
+	return Vec2(-1, 0);
 }
 
 // Diagonal up/right bullet path
@@ -1050,14 +1050,14 @@ Vec2 g_upRightBulletPath(int* t)
 {
 	assert2(t != 0, "Passed null parameter to path function");
 
-    return Vec2(2, 1);
+	return Vec2(2, 1);
 }
 
 // Diagonal down/right bullet path
 Vec2 g_downRightBulletPath(int* t)
 {
 	assert2(t != 0, "Passed null parameter to path function");
-    
+	
 	return Vec2(2, -1);
 }
 

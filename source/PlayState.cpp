@@ -76,7 +76,7 @@ void PlayState::init()
 
 	// Initialize the first stage
 	currentStage = g_stage1;
-    currentStage->reset();
+	currentStage->reset();
 	stageCount = 1;
 
 	// Init player
@@ -128,11 +128,11 @@ void PlayState::init()
 	powerUpExists = false;
 	poweredUp = false;
 
-    // Power ups
-    powerUp.useImg(POWER_UP_SPRITE_POS);
-    powerUp.setVisible(false);
-    powerUp.setSize(POWER_UP_SPRITE_SIZE);
-    powerUp.setTileIndex(g_shield_TilesPos);
+	// Power ups
+	powerUp.useImg(POWER_UP_SPRITE_POS);
+	powerUp.setVisible(false);
+	powerUp.setSize(POWER_UP_SPRITE_SIZE);
+	powerUp.setTileIndex(g_shield_TilesPos);
 
 	//Set up store state
 	g_storeState->setPlayerPointer(&player);
@@ -190,7 +190,7 @@ void PlayState::update()
 			bombAnimationCount = 0;
 			bombAnimation = false;
 			//player.setVisible(true);
-            //memcpy16(&se_mem[24], g_demo_starsMap, SBB_SIZE/2);
+			//memcpy16(&se_mem[24], g_demo_starsMap, SBB_SIZE/2);
 		}
 	}
 
@@ -228,8 +228,8 @@ void PlayState::update()
 
 void PlayState::refreshed()
 {
-    memcpy16(&se_mem[24], g_demo_starsMap, SBB_SIZE/2);
-    
+	memcpy16(&se_mem[24], g_demo_starsMap, SBB_SIZE/2);
+	
 	REG_BG0VOFS = starsBG_Pos.x;
 	REG_BG0HOFS = starsBG_Pos.y;
 
@@ -240,7 +240,7 @@ void PlayState::refreshed()
 	//  - 32 for enemy bullets
 	//	- 1 for R_triggered indicator
 	//  - 9 for "lives"
-    //  - 1 for power up
+	//  - 1 for power up
 	sprites = g_oamMan->allocSprites(NUM_SPRITES);
 
 	// Init display sprites at bottom
@@ -284,10 +284,10 @@ void PlayState::refreshed()
 		lives[i].setTileIndex(g_playerSpriteTilesPos);
 	}*/
 
-    // Power ups
-    powerUp.useImg(POWER_UP_SPRITE_POS);
-    powerUp.setSize(POWER_UP_SPRITE_SIZE);
-    powerUp.setTileIndex(g_shield_TilesPos);
+	// Power ups
+	powerUp.useImg(POWER_UP_SPRITE_POS);
+	powerUp.setSize(POWER_UP_SPRITE_SIZE);
+	powerUp.setTileIndex(g_shield_TilesPos);
 
 }
 
@@ -319,7 +319,7 @@ void PlayState::suspend()
    
 	powerUp.unuseImg();
 
-    clearText();
+	clearText();
 
 	g_oamMan->deallocSprites(sprites, NUM_SPRITES);
 }
@@ -493,24 +493,24 @@ void PlayState::updateText()
 	write2(blackStrip, Vec2(0, 0));
 	write2(blackStrip, Vec2(0, 19));
 
-    // Write lives
-    char lifeCountToString[10];
-    gba_itoa(player.getLifeCount(), lifeCountToString);
-    write(" :", Vec2(0,19));
+	// Write lives
+	char lifeCountToString[10];
+	gba_itoa(player.getLifeCount(), lifeCountToString);
+	write(" :", Vec2(0,19));
 
-    write(lifeCountToString, Vec2(2, 19));
+	write(lifeCountToString, Vec2(2, 19));
 
-    // Write bombs
-    char bombCountToString[10];
-    gba_itoa(player.getBombCount(), bombCountToString);
-    write(" :", Vec2(16, 19));
-    write(bombCountToString, Vec2(18, 19));
+	// Write bombs
+	char bombCountToString[10];
+	gba_itoa(player.getBombCount(), bombCountToString);
+	write(" :", Vec2(16, 19));
+	write(bombCountToString, Vec2(18, 19));
 
 	// Write Score
 	char scoreToString[10];
 	gba_itoa(g_playerScore, scoreToString);
-    write("Score: ", Vec2(0, 0));
-    write(scoreToString, Vec2(9, 0));
+	write("Score: ", Vec2(0, 0));
+	write(scoreToString, Vec2(9, 0));
 
 
 }
@@ -635,7 +635,7 @@ void PlayState::destroy()
 		powerUp.powerDown(&player);
 	}
 
-    clearText();
+	clearText();
 
 	g_oamMan->deallocSprites(sprites, NUM_SPRITES);
 }
@@ -646,10 +646,10 @@ void PlayState::updateBullets()
 
 	// Update each player bullet
 	Bullet* toUpdate;
-    bool bulletDestroyed;
+	bool bulletDestroyed;
 	while ((toUpdate = playerBulletItr.next()) != 0)
 	{
-        bulletDestroyed = false;
+		bulletDestroyed = false;
 		toUpdate->update();
 
 		// Check if the bullet has gone off-screen. If it is, we hide it and dealloc.
@@ -668,13 +668,13 @@ void PlayState::updateBullets()
 			{
 				if(toUpdate->hitBox.checkCollision(curEnemy->hitBox))
 				{
-                    if(!bulletDestroyed)
-                    {
+					if(!bulletDestroyed)
+					{
 						g_playerStageBulletsHit++;
-                        toUpdate->setVisible(false);
-                        playerBulletItr.dealloc();
-                        bulletDestroyed = true;
-                    }
+						toUpdate->setVisible(false);
+						playerBulletItr.dealloc();
+						bulletDestroyed = true;
+					}
 					if (curEnemy->damage(toUpdate->getDamage()))
 					{
 						curEnemy->setVisible(false);
@@ -701,12 +701,12 @@ void PlayState::updateBullets()
 			if (!player.isInvincible())
 			{
 				// Decrement life count
-                if(!player.getIsShielded())
-                {
-                    player.setPos(PLAYER_ORIGIN);
-                    // Give temporary immunity to damage
-                    player.setInvincibility(90);
-                }
+				if(!player.getIsShielded())
+				{
+					player.setPos(PLAYER_ORIGIN);
+					// Give temporary immunity to damage
+					player.setInvincibility(90);
+				}
 				player.killPlayer();
 				int lifeCount = player.getLifeCount();
 				lives[lifeCount - 1].setVisible(false);
@@ -888,11 +888,11 @@ void PlayState::updateEnemies()
 				//assert2(false, "The player crashed into an enemy.  If found, comment this out on line 854 in PlayState.cpp");
 				if (!player.isInvincible())
 				{
-                    if(!player.getIsShielded())
-                    {
-                        player.setPos(PLAYER_ORIGIN);
-                        player.setInvincibility(90);
-                    }
+					if(!player.getIsShielded())
+					{
+						player.setPos(PLAYER_ORIGIN);
+						player.setInvincibility(90);
+					}
 					player.killPlayer();
 					int lifeCount = player.getLifeCount();
 					lives[lifeCount-1].setVisible(false);
@@ -941,37 +941,37 @@ void PlayState::advanceStage()
 {
 	EnemyIterator itr = enemies.begin();
 	if(itr.next() == 0)
-    {
-        switch (stageCount)
-        {
-        case 1:
-            {
+	{
+		switch (stageCount)
+		{
+		case 1:
+			{
 				currentStage->increaseDifficulty();
-                currentStage = g_stage2;
-                currentStage->reset();
-                stageCount = 2;
-                break;
-            }
-        case 2:
-            {
+				currentStage = g_stage2;
+				currentStage->reset();
+				stageCount = 2;
+				break;
+			}
+		case 2:
+			{
 				currentStage->increaseDifficulty();
-                currentStage = g_stage3;
-                currentStage->reset();
-                stageCount = 3;
-                break;
-            }
-        case 3:
-            {
+				currentStage = g_stage3;
+				currentStage->reset();
+				stageCount = 3;
+				break;
+			}
+		case 3:
+			{
 				currentStage->increaseDifficulty();
-                currentStage = g_stage1;
-                currentStage->reset();
-                stageCount = 1;
-                break;
-            }
-        }
-        //gameStateMan->pushState(g_pauseState);
-        gameStateMan->pushState(g_stageEndState);
-    }
+				currentStage = g_stage1;
+				currentStage->reset();
+				stageCount = 1;
+				break;
+			}
+		}
+		//gameStateMan->pushState(g_pauseState);
+		gameStateMan->pushState(g_stageEndState);
+	}
 }
 
 void PlayState::updatePlayer()

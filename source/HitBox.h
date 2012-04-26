@@ -12,15 +12,15 @@
 struct HitBox
 {
 public:
-    HitBox();
-    HitBox(int _top, int _bottom, int _right, int _left);
-    void moveBox(int x, int y);
-    bool checkCollision(const HitBox& box);
+	HitBox();
+	HitBox(int _top, int _bottom, int _right, int _left);
+	void moveBox(int x, int y);
+	bool checkCollision(const HitBox& box);
 
 	int top;
-    int bottom;
-    int right;
-    int left;
+	int bottom;
+	int right;
+	int left;
 };
 
 inline bool HitBox::checkCollision(const HitBox& box)

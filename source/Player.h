@@ -30,10 +30,10 @@ public:
 
 	void update();
 	void changeSpeed(int speedChange);
-    void shootLightWide();
-    void shootLightFocus();
+	void shootLightWide();
+	void shootLightFocus();
 	void idleLight();
-    void shootHeavy();
+	void shootHeavy();
 	void idleHeavy();
 	void setParent(PlayState * parent);
 	void setInvincibility(int time);
@@ -50,20 +50,20 @@ public:
 	void upgradeHeavyFire();
 	void addShield();
 	void reset();
-    int getBombCount() { return bombCount; }
+	int getBombCount() { return bombCount; }
 	void setBombCount(int bombs) { bombCount = bombs; }
-    bool getIsShielded() { return isShielded; }
+	bool getIsShielded() { return isShielded; }
 	bool getPoweredUpFire() { return poweredUpFire; }
 	void setPoweredUpFire(bool poweredUp) { poweredUpFire = poweredUp; }
 	
 private:
 	int velocity;
-    int lightBulletCounter;
-    int lightBulletFrequency;
-    int heavyBulletCounter;
-    int heavyBulletFrequency;
-    int playerLightDamage;
-    int playerHeavyDamage;
+	int lightBulletCounter;
+	int lightBulletFrequency;
+	int heavyBulletCounter;
+	int heavyBulletFrequency;
+	int playerLightDamage;
+	int playerHeavyDamage;
 	PlayState * parent;
 	int invincibilityTime;
 	int bombCount;
@@ -72,8 +72,8 @@ private:
 	bool doubleLightFire;
 	bool fastChargingHeavyFire;
 	bool hasShield;
-    bool isShielded;
-    int shieldCounter;
+	bool isShielded;
+	int shieldCounter;
 	bool poweredUpFire;
 };
 

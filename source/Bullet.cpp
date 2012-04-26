@@ -16,14 +16,14 @@ void Bullet::update()
 {
 	if(isVisible())
 	{
-        assert2(pathFn != 0, "No bullet path set");
-        Vec2 velocity = pathFn(&time);
-        moveBy(velocity.x, velocity.y);
-        time++;
-    }
+		assert2(pathFn != 0, "No bullet path set");
+		Vec2 velocity = pathFn(&time);
+		moveBy(velocity.x, velocity.y);
+		time++;
+	}
 }
 
 void Bullet::setPath(Vec2(*_pathFn)(int*))
 {
-    pathFn = _pathFn;
+	pathFn = _pathFn;
 }

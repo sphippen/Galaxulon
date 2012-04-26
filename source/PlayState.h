@@ -135,19 +135,19 @@ public:
 	virtual void update();
 	virtual void refreshed();
 	virtual void destroy();
-    virtual void suspend();
+	virtual void suspend();
 
 	void spawnEnemy(int count, StageEvent::EnemyType * enemyTypes, int * xSpawn, int * ySpawn, int yOffset, int difficulty);
 	void spawnPowerUp(StageEvent::PowerUpType type, int yOffset);
 	void spawnBullet(int count, bool player, int * x, int * y, Path * path, int * damage, int * spriteChoice);
 	void advanceStage();
 private:
-    void updateBullets();
-    void checkInput();
-    void updateEnemies();
+	void updateBullets();
+	void checkInput();
+	void updateEnemies();
 	void updatePowerUp();
 	void updatePlayer();
-    void updateText();
+	void updateText();
 
 	Player * getPlayerPointer() { return &player; }
 	//void loseLife();
@@ -157,13 +157,13 @@ private:
 
 	ObjectAllocator<Bullet, 32> playerBullets;
 	ObjectAllocator<Enemy, 10> enemies;
-    ObjectAllocator<Bullet, 32> enemyBullets;
+	ObjectAllocator<Bullet, 32> enemyBullets;
 
 
 	bool R_triggered;
 	Sprite R_triggered_indicator;
 
-    Sprite lives[10];
+	Sprite lives[10];
 
 	Sprite lifeIndic;
 	Sprite bombIndic;

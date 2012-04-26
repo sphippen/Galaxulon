@@ -158,6 +158,6 @@ void GameOverState::destroy()
 
 void GameOverState::suspend()
 {
-    clearText();
+	clearText();
 	clearText2();
 }

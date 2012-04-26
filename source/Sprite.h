@@ -54,7 +54,7 @@ public:
 	bool isVisible();
 	int width();
 	int height();
-    HitBox hitBox;
+	HitBox hitBox;
 	SpriteSize getSpriteSize();
 
 private:

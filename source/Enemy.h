@@ -23,9 +23,9 @@ public:
 	Enemy();
 
 	void update();
-    void setPath(Vec2 (*_pathFn)(int*));
+	void setPath(Vec2 (*_pathFn)(int*));
 	bool damage(int amount); //Returns true if it survives; false if it dies
-    void resetTimer();
+	void resetTimer();
 	void setMaxHealth(int health);
 	void setBulletFrequency(int frequency);
 	void setParent(PlayState * parent);
@@ -33,14 +33,14 @@ public:
 	void setDamage(int damage);
 
 private:
-    // Function pointer that returns the velocity at that point in time.
-    Vec2 (*pathFn)(int*);
+	// Function pointer that returns the velocity at that point in time.
+	Vec2 (*pathFn)(int*);
 	Vec2 (*bulletPath)(int*);
-    int time;
+	int time;
 	int maxHealth;
 	int currentHealth;
-    int enemyBulletCounter;
-    int enemyBulletFrequency;
+	int enemyBulletCounter;
+	int enemyBulletFrequency;
 	int bulletDamage; //If bulletDamage is 0, the enemy does not fire
 	PlayState * parent;
 };

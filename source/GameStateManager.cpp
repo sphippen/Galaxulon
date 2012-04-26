@@ -34,9 +34,9 @@ void GameStateManager::pushState(GameState* newState)
 	assert2(newState != 0, "NULL state");
 	assert2(topState != MAX_NUM_GAME_STATES-1, "State stack is full");
 
-    // We don't want to suspend a state that isn't there!
-    if(topState != EMPTY_STACK)
-        stateStack[topState]->suspend();
+	// We don't want to suspend a state that isn't there!
+	if(topState != EMPTY_STACK)
+		stateStack[topState]->suspend();
 
 	newState->init();
 	stateStack[++topState] = newState;

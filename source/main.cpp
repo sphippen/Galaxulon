@@ -48,7 +48,7 @@ int main()
 	TitleScreenState titleState(&gameStateMan);
 	PauseState pauseState(&gameStateMan);
 	GameOverState gameOverState(&gameStateMan);
-    StoreState storeState(&gameStateMan);
+	StoreState storeState(&gameStateMan);
 	StageEndState stageEndState(&gameStateMan);
 	
 	g_gameStateMan = &gameStateMan;
@@ -57,7 +57,7 @@ int main()
 	g_titleState = &titleState;
 	g_pauseState = &pauseState;
 	g_gameOverState = &gameOverState;
-    g_storeState = &storeState;
+	g_storeState = &storeState;
 	g_stageEndState = &stageEndState;
 	g_audioMan = &audioMan;
 
@@ -241,10 +241,10 @@ void videoInit()
 
 	// Init enemy sprites
 	memcpy16(&tile_mem_obj[0][g_jellyfishTilesPos], g_jellyfishTiles, g_jellyfishTilesLen >> 1);
-    memcpy16(&tile_mem_obj[0][g_mineTilesPos], g_mineTiles, g_mineTilesLen >> 1);
-    memcpy16(&tile_mem_obj[0][g_sharkTilesPos], g_sharkTiles, g_sharkTilesLen >> 1);
-    memcpy16(&tile_mem_obj[0][g_squidTilesPos], g_squidTiles, g_squidTilesLen >> 1);
-    memcpy16(&tile_mem_obj[0][g_crabTilesPos], g_crabTiles, g_crabTilesLen >> 1);
+	memcpy16(&tile_mem_obj[0][g_mineTilesPos], g_mineTiles, g_mineTilesLen >> 1);
+	memcpy16(&tile_mem_obj[0][g_sharkTilesPos], g_sharkTiles, g_sharkTilesLen >> 1);
+	memcpy16(&tile_mem_obj[0][g_squidTilesPos], g_squidTiles, g_squidTilesLen >> 1);
+	memcpy16(&tile_mem_obj[0][g_crabTilesPos], g_crabTiles, g_crabTilesLen >> 1);
 
 	// Init upgrade sprites
 	memcpy16(&tile_mem_obj[0][g_extraLife_TilesPos], g_extraLife_Tiles, g_extraLife_TilesLen >> 1);
@@ -384,7 +384,7 @@ void initializeEvents()
 	g_event3->enemyCount = 3;
 	g_event3->endEvent = false;
 	g_event3->powerUp = StageEvent::none;
-    //Offset range: 35 - 53
+	//Offset range: 35 - 53
 	
 	g_event4->enemyType[0] = StageEvent::crab;
 	g_event4->xSpawnPos[0] = 250;

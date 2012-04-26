@@ -43,5 +43,5 @@ void PauseState::destroy()
 
 void PauseState::suspend()
 {
-    clearText();
+	clearText();
 }

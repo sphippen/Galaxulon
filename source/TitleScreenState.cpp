@@ -118,7 +118,7 @@ void TitleScreenState::destroy()
 
 void TitleScreenState::suspend()
 {
-    clearText();
+	clearText();
 	title_sprite1.setVisible(false);
 	title_sprite2.setVisible(false);
 }

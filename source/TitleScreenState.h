@@ -28,7 +28,7 @@ public:
 	virtual void init();
 	virtual void update();
 	virtual void destroy();
-    virtual void suspend();
+	virtual void suspend();
 
 private:
 	int curHighScoreDisp;

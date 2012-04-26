@@ -44,15 +44,15 @@ public:
 	virtual void init();
 	virtual void update();
 	virtual void destroy();
-    virtual void suspend();
-    virtual void refreshed();
+	virtual void suspend();
+	virtual void refreshed();
 	void setPlayerPointer(Player * _player) { playerPointer = _player; }
 
 private:
-    Sprite sprites[12];
-    int spriteCount;
-    Sprite player;
-    OBJ_ATTR* spriteObjs;
+	Sprite sprites[12];
+	int spriteCount;
+	Sprite player;
+	OBJ_ATTR* spriteObjs;
 	Player * playerPointer;
 	int selected;
 };

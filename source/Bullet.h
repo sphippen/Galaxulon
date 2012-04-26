@@ -19,12 +19,12 @@ public:
 
 	void update();
 
-    void setPath(Vec2 (*_pathFn)(int*));
+	void setPath(Vec2 (*_pathFn)(int*));
 	void setDamage(int _damage) { damage = _damage; }
 	int getDamage() { return damage; }
 private:
-    Vec2 (*pathFn)(int*);
-    int time;
+	Vec2 (*pathFn)(int*);
+	int time;
 	int damage;
 };
 

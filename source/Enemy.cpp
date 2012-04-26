@@ -17,12 +17,12 @@ void Enemy::update()
 {
 	// Enemy AI strat: STAY WHERE I AM BECAUSE I'M TOO SCARED TO MOVE ;___;
 
-    // New Enemy AI strat: Move exactly where we tell it like a good slave but never shoot. Run away from bullets. T_T
+	// New Enemy AI strat: Move exactly where we tell it like a good slave but never shoot. Run away from bullets. T_T
 	assert2(pathFn != 0, "no enemy path set");
-    Vec2 velocity = pathFn(&time);
+	Vec2 velocity = pathFn(&time);
 	//assert2(bulletDamage == 100 && velocity.y != 1, "The enemy exists and its y velocity is 1.");
-    moveBy(velocity.x, velocity.y);
-    time++;
+	moveBy(velocity.x, velocity.y);
+	time++;
 	if (!(bulletDamage == 0))
 	{
 		if (enemyBulletCounter == enemyBulletFrequency)
@@ -40,7 +40,7 @@ void Enemy::update()
 
 void Enemy::setPath(Vec2(*_pathFn)(int*))
 {
-    pathFn = _pathFn;
+	pathFn = _pathFn;
 }
 
 bool Enemy::damage(int amount)
@@ -51,7 +51,7 @@ bool Enemy::damage(int amount)
 
 void Enemy::resetTimer()
 {
-    time = 0;
+	time = 0;
 }
 
 void Enemy::setMaxHealth(int health)

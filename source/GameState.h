@@ -33,8 +33,8 @@ public:
 	// Called when this state is removed from the stack
 	virtual void destroy();
 
-    // Called when this state has something pushed onto it
-    virtual void suspend();
+	// Called when this state has something pushed onto it
+	virtual void suspend();
 protected:
 	GameStateManager* gameStateMan;
 };

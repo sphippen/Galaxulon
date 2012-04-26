@@ -104,7 +104,7 @@ void Sprite::useImg(OBJ_ATTR* _obj_img)
 
 void Sprite::unuseImg()
 {
-    if (obj_img != 0)
+	if (obj_img != 0)
 	{
 		obj_img->attr0 = (obj_img->attr0 & ~ATTR0_MODE_MASK) | ATTR0_HIDE;
 	}
@@ -117,7 +117,7 @@ void Sprite::moveBy(int dx, int dy)
 	x += dx;
 	y += dy;
 
-    hitBox.moveBox(dx, dy); // Update the position of the hit box
+	hitBox.moveBox(dx, dy); // Update the position of the hit box
 
 	if (obj_img != 0)
 	{
@@ -134,7 +134,7 @@ void Sprite::setPos(int newX, int newY)
 	y += dy;
 	x += dx;
 
-    hitBox.moveBox(dx, dy);
+	hitBox.moveBox(dx, dy);
 
 	if (obj_img != 0)
 	{

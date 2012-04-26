@@ -28,7 +28,7 @@
 
 StoreState::StoreState(GameStateManager* _gameStateMan) : GameState(_gameStateMan)
 {
-    spriteCount = 5;
+	spriteCount = 5;
 	selected = EXTRA_LIFE;
 }
 
@@ -42,25 +42,25 @@ void StoreState::init()
 	// Draw a black background
 	memset32(&se_mem[24], 0x00000000, (SBB_SIZE/4));
 	
-    spriteObjs = g_oamMan->allocSprites(SPRITE_NUM);
+	spriteObjs = g_oamMan->allocSprites(SPRITE_NUM);
 
-    write("Upgrades:", Vec2(10, 1));
+	write("Upgrades:", Vec2(10, 1));
 
-    player.useImg(SELECTOR_SPRITE_POS);
+	player.useImg(SELECTOR_SPRITE_POS);
 	player.setPos(0,SELECTOR_Y_SPAWN);
 	player.setPalette(SELECTOR_BASE_PALETTE);
 	player.setTileIndex(g_playerSpriteTilesPos);
 	player.setSize(SELECTOR_SPRITE_SIZE);
 	player.setVisible(true);
 
-    for(int i = 0; i < spriteCount; i++)
-    {
-        sprites[i].useImg(UPGRADE_SPRITE_POS+i);
-        sprites[i].setVisible(true);
-        sprites[i].setSize(UPGRADE_SPRITE_SIZE);
-        sprites[i].setPos(UPGRADE_X_POS + UPGRADE_X_INCREMENT, UPGRADE_Y_POS + UPGRADE_Y_INCREMENT*i);
+	for(int i = 0; i < spriteCount; i++)
+	{
+		sprites[i].useImg(UPGRADE_SPRITE_POS+i);
+		sprites[i].setVisible(true);
+		sprites[i].setSize(UPGRADE_SPRITE_SIZE);
+		sprites[i].setPos(UPGRADE_X_POS + UPGRADE_X_INCREMENT, UPGRADE_Y_POS + UPGRADE_Y_INCREMENT*i);
 		sprites[i].setPalette(4);
-    }
+	}
 	
 	sprites[0].setTileIndex(g_extraLife_TilesPos);
 	sprites[1].setTileIndex(g_extraBomb_TilesPos);
@@ -73,31 +73,31 @@ void StoreState::init()
 
 	selected = EXTRA_LIFE;
 
-    //Life, bomb, light fire upgrade, heavy fire upgrade, shield
-    write("Extra life", Vec2(7, 4));
-    write("Extra Bomb", Vec2(7, 7));
-    write("Upgrade Light Fire", Vec2(7, 10));
-    write("Upgrade Heavy Fire", Vec2(7, 13));
-    write("Shield", Vec2(7, 16));
+	//Life, bomb, light fire upgrade, heavy fire upgrade, shield
+	write("Extra life", Vec2(7, 4));
+	write("Extra Bomb", Vec2(7, 7));
+	write("Upgrade Light Fire", Vec2(7, 10));
+	write("Upgrade Heavy Fire", Vec2(7, 13));
+	write("Shield", Vec2(7, 16));
 }
 
 void StoreState::update()
 {
 	assert2(playerPointer != 0, "The store's player pointer is null.");
 	if (key_hit(KEY_UP))
-    {
-        if(player.Y() != SELECTOR_Y_SPAWN)
+	{
+		if(player.Y() != SELECTOR_Y_SPAWN)
 		{
-            player.moveBy(0, -1*UPGRADE_Y_INCREMENT);
+			player.moveBy(0, -1*UPGRADE_Y_INCREMENT);
 			selected--; //Moves this to the appropriate value as described in the .h
 		}
 	}
 
-    if (key_hit(KEY_DOWN))
+	if (key_hit(KEY_DOWN))
 	{
-        if(player.Y() != (SELECTOR_Y_SPAWN + (4*UPGRADE_Y_INCREMENT)))
+		if(player.Y() != (SELECTOR_Y_SPAWN + (4*UPGRADE_Y_INCREMENT)))
 		{
-            player.moveBy(0, UPGRADE_Y_INCREMENT);
+			player.moveBy(0, UPGRADE_Y_INCREMENT);
 			selected++; //Moves this to the appropriate value as described in the .h
 		}
 	}
@@ -138,26 +138,26 @@ void StoreState::update()
 void StoreState::destroy()
 {
 	clearText();
-    for(int i = 0; i < spriteCount; i++)
-    {
-        sprites[i].unuseImg();
-    }
-    player.unuseImg();
-    g_oamMan->deallocSprites(spriteObjs, SPRITE_NUM);
+	for(int i = 0; i < spriteCount; i++)
+	{
+		sprites[i].unuseImg();
+	}
+	player.unuseImg();
+	g_oamMan->deallocSprites(spriteObjs, SPRITE_NUM);
 }
 
 void StoreState::refreshed()
 {
-    init();
+	init();
 }
 
 void StoreState::suspend()
 {
-    clearText();
-    for(int i = 0; i < spriteCount; i++)
-    {
-        sprites[i].unuseImg();
-    }
-    player.unuseImg();
-    g_oamMan->deallocSprites(spriteObjs, SPRITE_NUM);
+	clearText();
+	for(int i = 0; i < spriteCount; i++)
+	{
+		sprites[i].unuseImg();
+	}
+	player.unuseImg();
+	g_oamMan->deallocSprites(spriteObjs, SPRITE_NUM);
 }
