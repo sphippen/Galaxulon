@@ -15,5 +15,5 @@ A key       | L          | Bomb
 S key       | R          | Toggle focused/wide primary fire
 Enter       | Start      | Pause game
 
-High scores will be saved in a filed called "Galaxulon.sav" when using
+Persistent high scores are saved with a file called "Galaxulon.sav" when using
 VisualBoyAdvance, and other emulators will likely have similar behavior.
