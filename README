@@ -1,0 +1,42 @@
+INTRODUCTION
+This is Galaxulon, a proof-of-concept space-themed Gameboy Advance shooter game.
+It uses tonclib for easy access to GBA hardware functionality.
+
+REPOSITORY LAYOUT
+source/
+  Contains all source code for the game.
+
+tonclib/
+  Contains the headers and documentation for tonclib.
+
+VBA/
+  Contains a Windows version of VisualBoyAdvance, a GBA emulator.
+
+Galaxulon.gba
+  A compiled release build of the game.
+
+LICENSE
+  Legal stuff.
+
+Makefile
+  A makefile to build the game in debug mode (requires devkitPro/devkitARM).
+
+Makefile_release
+  A makefile to build the game in release mode (requires devkitPro/devkitARM).
+
+README
+  This file.
+
+USAGE
+  Contains information on how to run the game in the emulator.
+
+COMPILATION
+Building the program requires devkitPro, specifically the devkitARM toolchain
+(this can be found here: http://devkitpro.org/ and here:
+http://devkitpro.org/wiki/Getting_Started/devkitARM).
+Once these toolchains are installed, the program can be compiled in debug mode
+with Makefile, and release mode with Makefile_release.
+
+AUTHORS
+Written by Spencer Phippen, Aric Parkinson, David Setser, and Daniel Setser as a
+class final project during April 2012.
